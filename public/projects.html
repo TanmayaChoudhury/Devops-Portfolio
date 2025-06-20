@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Portfolio - Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Animate.css for quick animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+      .bg-watermark {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.07;
+        background: url('path/to/kubernetes-logo.png') 10% 20%/120px no-repeat,
+                    url('path/to/docker-logo.png') 80% 60%/100px no-repeat,
+                    url('path/to/ansible-logo.png') 60% 10%/90px no-repeat,
+                    url('path/to/terraform-logo.png') 30% 70%/110px no-repeat;
+        filter: blur(1px);
+      }
+      html, body {
+        height: 100%;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
+      }
+      footer {
+        flex-shrink: 0;
+      }
+    </style>
+</head>
+<body class="dark bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-gray-100 relative overflow-x-hidden">
+    <div class="bg-watermark"></div>
+    <header class="bg-blue-600 dark:bg-gray-800 p-4 text-white shadow-lg animate__animated animate__fadeInDown sticky top-0 z-10">
+        <h1 class="text-3xl font-bold animate__animated animate__fadeInLeft">My DevOps Projects</h1>
+    </header>
+    <main class="container mx-auto p-4 relative z-10">
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-8 animate__animated animate__fadeInLeft">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp">
+                    <h3 class="text-xl font-bold text-blue-300">Project Title 1</h3>
+                    <p class="mt-2">Description of Project 1. This project involves...</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool1</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool2</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool3</span>
+                    </div>
+                    <a href="https://github.com/username/project1" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline transition-colors duration-300">View on GitHub</a>
+                </div>
+                <div class="bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+                    <h3 class="text-xl font-bold text-blue-300">Project Title 2</h3>
+                    <p class="mt-2">Description of Project 2. This project focuses on...</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool1</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool2</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool3</span>
+                    </div>
+                    <a href="https://github.com/username/project2" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline transition-colors duration-300">View on GitHub</a>
+                </div>
+                <div class="bg-gray-800 bg-opacity-90 p-6 rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-2s">
+                    <h3 class="text-xl font-bold text-blue-300">Project Title 3</h3>
+                    <p class="mt-2">Description of Project 3. This project showcases...</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool1</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool2</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded">Tool3</span>
+                    </div>
+                    <a href="https://github.com/username/project3" target="_blank" class="inline-block mt-4 text-blue-400 hover:underline transition-colors duration-300">View on GitHub</a>
+                </div>
+                <!-- Add more projects as needed, copy the card above and increment animate__delay-Xs for staggered animation -->
+            </div>
+        </section>
+    </main>
+    <footer class="bg-blue-600 dark:bg-gray-800 p-4 text-white text-center shadow-lg animate__animated animate__fadeInUp">
+        <p>&copy; 2023 My DevOps Portfolio</p>
+    </footer>
+    <script>
+      // Reveal project cards on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate__fadeInUp');
+            entry.target.classList.remove('opacity-0');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.grid > div').forEach(card => {
+        card.classList.add('opacity-0');
+        observer.observe(card);
+      });
+    </script>
+</body>
+</html>
