@@ -23,10 +23,9 @@
       pointer-events: none;
       z-index: 0;
       opacity: 0.07;
-      background: url('path/to/kubernetes-logo.png') 10% 20%/120px no-repeat,
-                  url('path/to/docker-logo.png') 80% 60%/100px no-repeat,
-                  url('path/to/ansible-logo.png') 60% 10%/90px no-repeat,
-                  url('path/to/terraform-logo.png') 30% 70%/110px no-repeat;
+      background: url('images/kubernetes.png') 10% 20%/120px no-repeat,
+                  url('images/ansible.png') 60% 10%/90px no-repeat,
+                  url('images/terraform') 30% 70%/110px no-repeat;
       filter: blur(1px);
     }
   </style>
@@ -35,7 +34,7 @@
 
   <div class="bg-watermark"></div>
 
-  <header class="bg-blue-600 dark:bg-gray-800 p-4 text-white shadow-lg transition-colors duration-500 sticky top-0 z-10 animate__animated animate__fadeInDown">
+  <header id="main-header" class="bg-blue-600 dark:bg-gray-800 p-4 text-white shadow-lg transition-colors duration-500 sticky top-0 z-10 animate__animated animate__fadeInDown">
     <h1 class="text-3xl font-bold tracking-tight animate__animated animate__fadeInLeft">DevOps Portfolio</h1>
     <nav class="mt-2">
       <ul class="flex space-x-4">
@@ -47,6 +46,24 @@
       </ul>
     </nav>
   </header>
+  <script>
+    // Fade out header on scroll (fix for sticky header)
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.pageYOffset;
+      // Fade out header as you scroll down, min 0, max 1
+      let opacity = Math.max(0, 1 - currentScroll / 200);
+      header.style.opacity = opacity;
+      header.style.pointerEvents = opacity < 0.05 ? 'none' : 'auto';
+      header.style.transition = 'opacity 0.3s cubic-bezier(0.4,0,0.2,1)';
+      // Also hide visually when fully transparent to avoid sticky space
+      if (opacity < 0.05) {
+        header.style.visibility = 'hidden';
+      } else {
+        header.style.visibility = 'visible';
+      }
+    });
+  </script>
 
   <main class="p-6 relative z-10">
     <section id="home" class="mb-12 animate-fadeIn">
@@ -61,33 +78,57 @@
     <section id="skills" class="mb-12 animate-fadeIn">
       <h2 class="text-2xl font-semibold mb-4 animate__animated animate__fadeInLeft">Skills</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn">
-          <img src="path/to/ansible-logo.png" alt="Ansible" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/ansible.png" alt="Ansible" class="h-12 mb-2">
           <span class="text-sm mt-1">Ansible</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-1s">
-          <img src="path/to/kubernetes-logo.png" alt="Kubernetes" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-1s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/kubernetes.png" alt="Kubernetes" class="h-12 mb-2">
           <span class="text-sm mt-1">Kubernetes</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-2s">
-          <img src="path/to/terraform-logo.png" alt="Terraform" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-2s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/terraform.png" alt="Terraform" class="h-12 mb-2">
           <span class="text-sm mt-1">Terraform</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-3s">
-          <img src="path/to/docker-logo.png" alt="Docker" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-3s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/docker.png" alt="Docker" class="h-12 mb-2">
           <span class="text-sm mt-1">Docker</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-4s">
-          <img src="path/to/git-logo.png" alt="Git" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-4s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/git.png" alt="Git" class="h-12 mb-2">
           <span class="text-sm mt-1">Git</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-5s">
-          <img src="path/to/azure-logo.png" alt="Azure" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-5s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/azure.png" alt="Azure" class="h-12 mb-2">
           <span class="text-sm mt-1">Azure</span>
         </div>
-        <div class="flex flex-col items-center justify-center bg-white bg-opacity-10 p-4 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-6s">
-          <img src="path/to/linux-logo.png" alt="Linux" class="h-12 mb-2">
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-6s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/linux.png" alt="Linux" class="h-12 mb-2">
           <span class="text-sm mt-1">Linux</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/windows server.png" alt="Windows Server" class="h-12 mb-2">
+          <span class="text-sm mt-1">Windows Server</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/azure devops.png" alt="Azure Devops" class="h-12 mb-2">
+          <span class="text-sm mt-1">Azure Devops</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/powershell.png" alt="Powershell" class="h-12 mb-2">
+          <span class="text-sm mt-1">Powershell</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/networking.png" alt="Networking" class="h-12 mb-2">
+          <span class="text-sm mt-1">Networking</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/prometheus.png" alt="Promethues" class="h-12 mb-2">
+          <span class="text-sm mt-1">Promethues</span>
+        </div>
+        <div class="flex flex-col items-center justify-center p-4 rounded-lg transform transition-transform duration-300 hover:scale-105 animate__animated animate__zoomIn animate__delay-7s" style="background-color: rgba(35,35,35,0.85); box-shadow: none;">
+          <img src="images/grafana.png" alt="Grafana" class="h-12 mb-2">
+          <span class="text-sm mt-1">Grafana</span>
         </div>
       </div>
     </section>
@@ -139,4 +180,18 @@
           GitHub
         </a>
         <a href="https://linkedin.com/in/yourusername" target="_blank" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 animate__animated animate__fadeInUp animate__delay-2s">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h3v1.27c.42-.81 1.45-1.27 2.73-1.27 3 0 3.57 1.97 3.57 4.54v5.46z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-blue-600 dark:bg-gray-800 text-gray-100 py-4 mt-12">
+    <div class="container mx-auto text-center">
+      <p class="text-sm">&copy; 2023 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
