@@ -14,11 +14,17 @@
       pointer-events: none;
       z-index: 0;
       opacity: 0.07;
-      background: url('path/to/kubernetes-logo.png') 10% 20%/120px no-repeat,
-                  url('path/to/docker-logo.png') 80% 60%/100px no-repeat,
-                  url('path/to/ansible-logo.png') 60% 10%/90px no-repeat,
-                  url('path/to/terraform-logo.png') 30% 70%/110px no-repeat;
+      background: url('images/kubernetes.png') 10% 20%/120px no-repeat,
+                  url('images/docker.png') 80% 60%/100px no-repeat,
+                  url('images/ansible.png') 60% 10%/90px no-repeat,
+                  url('images/terraform.png') 30% 70%/110px no-repeat;
       filter: blur(1px);
+    }
+    @media (max-width: 640px) {
+      .bg-watermark {
+        background-size: 60px, 45px, 55px, 50px;
+        background-position: 5% 10%, 70% 5%, 20% 60%, 60% 80%;
+      }
     }
     html, body {
       height: 100%;
@@ -37,22 +43,18 @@
   </style>
 </head>
 <body class="dark bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-gray-100 relative overflow-x-hidden">
-
   <div class="bg-watermark"></div>
-
   <header class="bg-blue-600 dark:bg-gray-800 p-4 text-white shadow-lg animate__animated animate__fadeInDown sticky top-0 z-10">
     <h1 class="text-2xl font-bold animate__animated animate__fadeInLeft">Contact Me</h1>
   </header>
-
-  <div class="w-full bg-gray-800 bg-opacity-90 py-4 px-6 flex justify-center space-x-6 shadow-lg z-10">
+  <nav class="w-full bg-gray-800 bg-opacity-90 py-4 px-6 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 shadow-lg z-10">
     <a href="index.html" class="text-gray-100 hover:text-blue-400 font-semibold transition">Home</a>
     <a href="projects.html" class="text-gray-100 hover:text-blue-400 font-semibold transition">Projects</a>
     <a href="skills.html" class="text-gray-100 hover:text-blue-400 font-semibold transition">Skills</a>
     <a href="certifications.html" class="text-gray-100 hover:text-blue-400 font-semibold transition">Certifications</a>
     <a href="contact.html" class="text-gray-100 hover:text-blue-400 font-semibold transition">Contact</a>
-  </div>
-
-  <main class="container mx-auto p-6 relative z-10">
+  </nav>
+  <main class="container mx-auto p-4 sm:p-6 relative z-10">
     <section class="mb-12 animate__animated animate__fadeInUp">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
         <svg class="h-7 w-7 text-blue-400 animate__animated animate__bounceIn" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6A8.38 8.38 0 0112 3a8.5 8.5 0 019 7.5z"/></svg>
@@ -61,7 +63,7 @@
       <div class="flex flex-col gap-6 justify-center animate__animated animate__fadeInRight mt-8">
         <div class="bg-gray-800 bg-opacity-80 rounded-xl p-6 shadow flex flex-col gap-4">
           <h3 class="text-lg font-semibold mb-2">Connect with me:</h3>
-          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors duration-300 text-lg font-medium">
+          <a href="https://www.linkedin.com/in/tanmaya-choudhury-25b110300" target="_blank" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors duration-300 text-lg font-medium">
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.37-1.54 2.82-1.54 3.01 0 3.57 1.98 3.57 4.56v4.75z"/></svg>
             LinkedIn
           </a>
@@ -86,11 +88,9 @@
       </a>
     </section>
   </main>
-
   <footer class="bg-blue-600 dark:bg-gray-800 p-4 text-white text-center shadow-lg animate__animated animate__fadeInUp">
     <p>&copy; 2023 Your Name. All rights reserved.</p>
   </footer>
-
   <script>
     // Reveal sections on scroll
     const observer = new IntersectionObserver((entries) => {
@@ -101,7 +101,6 @@
         }
       });
     }, { threshold: 0.15 });
-
     document.querySelectorAll('main > section').forEach(section => {
       section.classList.add('opacity-0');
       observer.observe(section);
